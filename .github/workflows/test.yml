@@ -1,0 +1,24 @@
+name: Test Run for Action
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test-action:
+    name: Running Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - uses: ./
+        with:
+          webhook-url: "https://example.com/webhook"
+          message-title: "Test Title"
+          message-body: "Test Body"
+          card-color: "GREEN"
+          dry-run: "true"
+          output-payload: "true"

@@ -1,0 +1,31 @@
+{
+    "printWidth": 120,
+    "trailingComma": "all",
+    "semi": false,
+    "useTabs": false,
+    "overrides": [
+        {
+            "files": "*.py",
+            "options": {
+                "printWidth": 120,
+                "tabWidth": 4,
+                "singleQuote": true,
+                "trailingComma": "none",
+                "semi": true,
+                "useTabs": false
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "printWidth": 120,
+                "tabWidth": 4,
+                "singleQuote": false,
+                "trailingComma": "all",
+                "semi": false,
+                "useTabs": false,
+                "comments": true
+            }
+        }
+    ]
+}

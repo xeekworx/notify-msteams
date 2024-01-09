@@ -1,0 +1,49 @@
+name: "Send Microsoft Teams Connector Card"
+description: "Sends a custom connector card to a Microsoft Teams channel using a webhook URL"
+inputs:
+  webhook-url:
+    description: "Webhook URL of the Microsoft Teams channel"
+    required: true
+  message-title:
+    description: "The title of the teams connector card"
+    required: true
+  message-body:
+    description: "The body of the message to send"
+    required: true
+  card-color:
+    description: "The color of the card (hex) or named colors including GREEN, YELLOW, or RED"
+    required: false
+  dry-run:
+    description: "Enable dry run mode. If set, the action will not send the payload."
+    required: false
+    default: "false"
+  output-payload:
+    description: "Output the JSON payload being sent to the webhook."
+    required: false
+    default: "false"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install Dependencies
+      working-directory: ${{ github.action_path }}/src
+      shell: bash
+      run: pip install -r requirements.txt
+
+    - name: Run Script
+      id: run-script
+      working-directory: ${{ github.action_path }}/src
+      run: python main.py
+      shell: bash
+      env:
+        TEAMS_WEBHOOK_URL: ${{ inputs.webhook-url }}
+        TEAMS_CARD_MESSAGE_TITLE: ${{ inputs.message-title }}
+        TEAMS_CARD_MESSAGE_BODY: ${{ inputs.message-body }}
+        TEAMS_CARD_COLOR: ${{ inputs.card-color }}
+        TEAMS_NOTIFY_DRY_RUN: ${{ inputs.dry-run }}
+        TEAMS_CARD_OUTPUT_PAYLOAD: ${{ inputs.output-payload }}
