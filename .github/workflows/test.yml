@@ -20,5 +20,8 @@ jobs:
           message-title: "Test Title"
           message-body: "Test Body"
           card-color: "GREEN"
+          buttons: |
+            Button 1 Text, https://example.com/button1
+            Button 2 Text, https://example.com/button2
           dry-run: "true"
           output-payload: "true"

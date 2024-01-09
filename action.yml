@@ -13,6 +13,10 @@ inputs:
   card-color:
     description: "The color of the card (hex) or named colors including GREEN, YELLOW, or RED"
     required: false
+  buttons:
+    description: "Buttons to add to the card. Each button is a pair of text and link separated by a new line or full-colon (;). eg. Button One,http://example.com; Button Two,http://example.com"
+    required: false
+    default: ""
   dry-run:
     description: "Enable dry run mode. If set, the action will not send the payload."
     required: false
@@ -45,5 +49,6 @@ runs:
         TEAMS_CARD_MESSAGE_TITLE: ${{ inputs.message-title }}
         TEAMS_CARD_MESSAGE_BODY: ${{ inputs.message-body }}
         TEAMS_CARD_COLOR: ${{ inputs.card-color }}
+        TEAMS_CARD_BUTTONS: ${{ inputs.buttons }}
         TEAMS_NOTIFY_DRY_RUN: ${{ inputs.dry-run }}
         TEAMS_CARD_OUTPUT_PAYLOAD: ${{ inputs.output-payload }}

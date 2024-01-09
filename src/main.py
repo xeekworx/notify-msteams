@@ -1,5 +1,6 @@
 import argparse
 import json
+from operator import contains
 import os
 import pymsteams
 import tools
@@ -11,6 +12,7 @@ ENV_NAME_MESSAGE_TITLE = 'TEAMS_CARD_MESSAGE_TITLE'
 ENV_NAME_MESSAGE_BODY = 'TEAMS_CARD_MESSAGE_BODY'
 ENV_NAME_DRY_RUN = 'TEAMS_NOTIFY_DRY_RUN'
 ENV_NAME_OUTPUT_PAYLOAD = 'TEAMS_CARD_OUTPUT_PAYLOAD'
+ENV_NAME_BUTTONS = 'TEAMS_CARD_BUTTONS'
 
 DEFAULT_WEBHOOK_URL = os.getenv(ENV_NAME_WEBHOOK_URL)
 DEFAULT_SELECTED_COLOR = os.getenv(ENV_NAME_CARD_COLOR)
@@ -18,6 +20,7 @@ DEFAULT_MESSAGE_TITLE = os.getenv(ENV_NAME_MESSAGE_TITLE)
 DEFAULT_MESSAGE_BODY = os.getenv(ENV_NAME_MESSAGE_BODY)
 DEFAULT_DRY_RUN = os.getenv(ENV_NAME_DRY_RUN, 'false').lower() == 'true'
 DEFAULT_OUTPUT_PAYLOAD = os.getenv(ENV_NAME_OUTPUT_PAYLOAD, 'false').lower() == 'true'
+DEFAULT_BUTTONS = os.getenv("TEAMS_CARD_BUTTONS")
 
 NAMED_COLORS = {
     "GREEN": "#22c74e",
@@ -60,6 +63,16 @@ if args.color and not tools.is_hex(args.color):
     parser.error(
         f"The selected color '{args.color}' is invalid, use a hex value or one of {list(NAMED_COLORS.keys())}.")
 
+# Get buttons from the environment variable:
+if not args.button and DEFAULT_BUTTONS:
+    detectedSeparator = '\n' if '\n' in DEFAULT_BUTTONS else ';'
+    args.button = []
+    for line in DEFAULT_BUTTONS.split(detectedSeparator):
+        parts = line.strip().split(',')
+        if len(parts) >= 2:
+            button_text, button_link = parts
+            args.button.append((button_text.strip(), button_link.strip()))
+            
 # Validate buttons:
 if args.button:
     for button in args.button:

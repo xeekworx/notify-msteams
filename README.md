@@ -15,8 +15,14 @@ Sends a custom connector card to a Microsoft Teams channel using a webhook URL.
 - `card-color` (optional):
   - Description: The color of the card (hex) or named colors including GREEN, YELLOW, or RED.
   - Default: Not specified.
+- `buttons` (optional):
+  - Description: Buttons to add to the card. Each button is a pair of text and link separated by a new line or semicolon (;).
+  - Default: Not specified.
 - `dry-run` (optional):
   - Description: Enable dry run mode. If set to 'true', the action will not send the payload.
+  - Default: 'false'.
+- `output-payload` (optional):
+  - Description: Output the JSON payload being sent to the webhook.
   - Default: 'false'.
 
 ### Example Usage
@@ -42,4 +48,8 @@ jobs:
         message-title: 'New Release'
         message-body: 'A new version of our software is now available!'
         card-color: 'GREEN'
+        buttons: |
+          Button One, http://example.com
+          Button Two, http://example.com
         dry-run: 'false'
+```

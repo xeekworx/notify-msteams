@@ -13,7 +13,9 @@
             "justMyCode": true,
             "env": {
                 "TEAMS_WEBHOOK_URL": "http://example.com/webhook",
-                "TEAMS_NOTIFY_DRY_RUN": "true"
+                "TEAMS_NOTIFY_DRY_RUN": "true",
+                "TEAMS_CARD_OUTPUT_PAYLOAD": "true",
+                "TEAMS_CARD_BUTTONS": "test 1,http://example.com;test 2,http://example.com"
             }
         }
     ]
