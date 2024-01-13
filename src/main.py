@@ -72,7 +72,7 @@ if not args.button and DEFAULT_BUTTONS:
         if len(parts) >= 2:
             button_text, button_link = parts
             args.button.append((button_text.strip(), button_link.strip()))
-            
+
 # Validate buttons:
 if args.button:
     for button in args.button:
