@@ -1,5 +1,10 @@
 name: "Send Microsoft Teams Connector Card"
+author: "John Tullos"
 description: "Sends a custom connector card to a Microsoft Teams channel using a webhook URL"
+branding:
+  icon: message-square
+  color: green
+
 inputs:
   webhook-url:
     description: "Webhook URL of the Microsoft Teams channel"
