@@ -2,10 +2,11 @@
 
 [![Test Run for Action](https://github.com/xeekworx/notify-msteams/actions/workflows/test.yml/badge.svg)](https://github.com/xeekworx/notify-msteams/actions/workflows/test.yml)
 
-### Description
+## Description
 
 Sends a custom connector card to a Microsoft Teams channel using a webhook URL.
 
+## Usage
 ### Inputs
 
 - `webhook-url` (required):
@@ -60,3 +61,7 @@ jobs:
           Button Two, http://example.com
         dry-run: 'false'
 ```
+
+## Acknowledgments
+
+This project uses [pymsteams](https://github.com/rveachkc/pymsteams), a Python wrapper for Microsoft Teams webhooks. `pymsteams` is distributed under the Apache License, Version 2.0. See [LICENSE](https://www.apache.org/licenses/LICENSE-2.0) for more details.
