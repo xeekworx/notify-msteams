@@ -1,5 +1,7 @@
 # Send Microsoft Teams Connector Card
 
+[![Test Run for Action](https://github.com/xeekworx/notify-msteams/actions/workflows/test.yml/badge.svg)](https://github.com/xeekworx/notify-msteams/actions/workflows/test.yml)
+
 ### Description
 
 Sends a custom connector card to a Microsoft Teams channel using a webhook URL.
